@@ -39,7 +39,13 @@ grid :: Int -> Int -> [(Int, Int)]
 grid x y = [(x,y) | x <- [0..x], y <- [0..y]]
 
 square :: Int -> [(Int, Int)]
-square x = concat [[(x,y) | x <- [0..x], y <- [0..x], x /= y], [(y,x) | x <- [0..x], y <- [0..x], x /= y]]
+square n = [(x,y) | x <- [0..n], y <- [0..n], x /= y]
 
---myReplicate :: Int -> a -> [a]
---myReplicate int a = [x | x <- ]
+pyths :: Int -> [(Int, Int, Int)]
+pyths n1 = [(x,y,z) | x <- [1..n1], y <- [1..n1], z <- [1..n1], x^2 + y^2 == z^2]
+
+factors :: Int -> [Int]
+factors n = [x | x <- [1..n], n `mod` x == 0]
+
+perfects :: Int -> [Int]
+perfects n = [x | x <- [1..n], sum(init(factors n)) == x]
